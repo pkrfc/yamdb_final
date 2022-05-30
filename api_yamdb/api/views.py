@@ -10,13 +10,14 @@ from rest_framework.permissions import (AllowAny, IsAuthenticated,
                                         IsAuthenticatedOrReadOnly)
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import AccessToken
-from api_yamdb.settings import FROM_EMAIL
 from reviews.models import Categories, Comment, Genres, Review, Title
 from users.models import User
 
+from api_yamdb.settings import FROM_EMAIL
+
 from .filters import TitlesFilter
-from .permissions import (AdminOnly, IsOnlyAdmin,
-                          ReviewCommentPermission, ReadOnly)
+from .permissions import (AdminOnly, IsOnlyAdmin, ReadOnly,
+                          ReviewCommentPermission)
 from .serializers import (CategoriesSerializer, CommentSerializer,
                           GenreSerializer, ProfileSerializer, ReviewSerializer,
                           SignupSerializer, TitlesSerializer, TokenSerializer,
