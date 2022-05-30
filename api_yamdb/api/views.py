@@ -78,6 +78,7 @@ def sign_up(request):
         username=username,
         email=email,
         confirmation_code=confirmation_code)
+
     send_mail(
         subject='Код подтверждения yamdb.ru',
         message=f'"confirmation_code": "{confirmation_code}"',
