@@ -33,6 +33,7 @@ jobs:
   build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
     needs: tests
     steps:
       - name: Check out the repo
@@ -52,6 +53,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
     needs: build_and_push_to_docker_hub
     steps:
       - name: executing remote ssh commands to deploy
@@ -66,6 +68,7 @@ jobs:
             sudo docker run --rm -d -p 5000:5000 pkrfc/api_yamdb:v1
   send_message:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
     needs: deploy
     steps:
       - name: send message
