@@ -44,6 +44,6 @@ docker-compose exec web python manage.py createsuperuser
 docker-compose exec web python manage.py collectstatic --no-input
 ```
 
-Ссылка на проект:
+Ссылка на админку проекта:
 
-http://84.252.141.245:5000/
+http://84.252.141.245/admin/
