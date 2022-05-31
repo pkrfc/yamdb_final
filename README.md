@@ -45,5 +45,4 @@ docker-compose exec web python manage.py collectstatic --no-input
 ```
 
 Ссылка на проект:
-
 http://84.252.141.245:5000/
