@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': env('DB_NAME', default='postgres'),
         'USER': env('POSTGRES_USER', default='postgres'),
         'PASSWORD': env('POSTGRES_PASSWORD', default='postgres'),
-        'HOST': env('DB_HOST'),
+        'HOST': env('DB_HOST', default='db'),
         'PORT': env('DB_PORT', default='5432')
     }
 }
