@@ -4,6 +4,7 @@ from datetime import timedelta
 import environ
 from django.core.management.utils import get_random_secret_key
 
+
 env = environ.Env(
     DEBUG=(bool, True),
     SECRET_KEY=(str, '*'),
@@ -14,6 +15,7 @@ env = environ.Env(
     DB_HOST=str,
     DB_PORT=int,
 )
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
