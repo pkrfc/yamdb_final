@@ -15,8 +15,9 @@ env = environ.Env(
     DB_PORT=int,
 )
 
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+environ.Env.read_env()
 
 SECRET_KEY = env('SECRET_KEY', default=get_random_secret_key())
 
