@@ -10,7 +10,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default=get_random_secret_key())
 
 DEBUG = False
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split()
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', ',').split()
 
 AUTH_USER_MODEL = 'users.User'
 
