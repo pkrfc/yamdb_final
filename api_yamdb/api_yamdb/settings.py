@@ -1,16 +1,29 @@
 import os
 from datetime import timedelta
 
+import environ
+
 from django.core.management.utils import get_random_secret_key
+
+env = environ.Env(
+    DEBUG=(bool, True),
+    SECRET_KEY=(str, '*'),
+    ALLOWED_HOSTS=(list, []),
+    DB_NAME=str,
+    POSTGRES_USER=str,
+    POSTGRES_PASSWORD=str,
+    DB_HOST=str,
+    DB_PORT=int,
+)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = os.environ.get('SECRET_KEY', default=get_random_secret_key())
+SECRET_KEY = env('SECRET_KEY', default=get_random_secret_key())
+
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 DEBUG = False
 
-
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', default='127.0.0.1 web').split(' ')
 
 AUTH_USER_MODEL = 'users.User'
 
@@ -66,12 +79,12 @@ WSGI_APPLICATION = 'api_yamdb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('DB_ENGINE', default='django.db.backends.postgresql'),
-        'NAME': os.getenv('DB_NAME', default='postgres'),
-        'USER': os.getenv('POSTGRES_USER', default='postgres'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='postgres'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT', default='5432')
+        'ENGINE': env('DB_ENGINE', default='django.db.backends.postgresql'),
+        'NAME': env('DB_NAME', default='postgres'),
+        'USER': env('POSTGRES_USER', default='postgres'),
+        'PASSWORD': env('POSTGRES_PASSWORD', default='postgres'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT', default='5432')
     }
 }
 
